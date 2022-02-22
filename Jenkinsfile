@@ -15,18 +15,6 @@ pipeline{
                 '''
             }
         }
-        stage('scanning with sonarqube') {
-            steps {
-                sh '''
-                export M2_HOME=/usr/local/apache-maven
-                export M2=$M2_HOME/bin
-                export PATH=$M2:$PATH
-                export JAVA_HOME=/opt/jdk1.8.0_171
-                export PATH=$PATH:JAVA_HOME/bin
-                mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Akhil007-01_bookstore
-                '''
-            }
-        }
         stage('Building the docker image') {
             steps {
                 sh '''
