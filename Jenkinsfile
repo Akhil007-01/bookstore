@@ -25,7 +25,7 @@ pipeline{
         stage('Pushing to docker hub') {
             steps {
                 sh '''
-                docker tag bookstore:${BUILD_NUMBER} akhil37/bookstore:latest
+                docker tag bookstore:${BUILD_NUMBER} akhil37/bookstore:${BUILD_NUMBER}
                 docker login -u akhil37 -p Akhil@7421
                 docker push akhil37/bookstore:${BUILD_NUMBER}
                 '''
