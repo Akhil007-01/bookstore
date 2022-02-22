@@ -3,6 +3,9 @@ def STATUS = ['SUCCESS': 'good', 'FAILURE': 'danger', 'UNSTABLE': 'danger', 'ABO
 
 pipeline{
     agent any
+    environment {
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    }
     stages{
         stage('Building the app using maven') {
             steps {
