@@ -2,7 +2,7 @@
 def STATUS = ['SUCCESS': 'good', 'FAILURE': 'danger', 'UNSTABLE': 'danger', 'ABORTED': 'danger']
 
 pipeline{
-    agent { label '' }
+    agent any
     stages{
         stage('Building the app using maven') {
             steps {
@@ -35,6 +35,5 @@ pipeline{
                 '''
             }
         }
-    }
-    
+    }    
 }
