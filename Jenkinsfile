@@ -15,7 +15,7 @@ pipeline{
         stage('scanning with sonarqube') {
             steps {
                 sh '''
-                mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=shabuddinshaik_bookstore
+               mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Akhil007-01_bookstore
                 '''
             }
         }
@@ -30,8 +30,8 @@ pipeline{
             steps {
                 sh '''
                 docker tag bookstore:${BUILD_NUMBER} bookstore:latest
-                docker login -u shabuddinshaik --password-stdin
-                docker push shabuddinshaiik bookstore:${BUILD_NUMBER}
+                docker login -u akhil37 -p Akhil@7421
+                docker push akhil37/bookstore:${BUILD_NUMBER}
                 '''
             }
         }
