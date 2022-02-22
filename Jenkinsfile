@@ -15,13 +15,6 @@ pipeline{
                 '''
             }
         }
-        stage('Building the docker image') {
-            steps {
-                sh '''
-                docker build . -t bookstore:${BUILD_NUMBER}
-                '''
-            }
-        }
         stages {
         stage('Clone sources') {
             steps {
@@ -38,6 +31,13 @@ pipeline{
         stage("Quality gate") {
             steps {
                 waitForQualityGate abortPipeline: true
+            }
+        }
+        stage('Building the docker image') {
+            steps {
+                sh '''
+                docker build . -t bookstore:${BUILD_NUMBER}
+                '''
             }
         }
         stage('Pushing to docker hub') {
