@@ -10,7 +10,7 @@ pipeline{
                 echo building the maven application
                 mvn clean install
                 '''
-            }
+        }
         }
         stage('scanning with sonarqube') {
             steps {
