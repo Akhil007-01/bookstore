@@ -10,12 +10,12 @@ pipeline{
                 echo building the maven application
                 mvn clean install
                 '''
-        }
+            }
         }
         stage('scanning with sonarqube') {
             steps {
                 sh '''
-               mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Akhil007-01_bookstore
+                mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Akhil007-01_bookstore
                 '''
             }
         }
