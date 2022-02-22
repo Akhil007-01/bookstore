@@ -8,6 +8,9 @@ pipeline{
             steps {
                 sh '''
                 echo building the maven application
+                export M2_HOME=/usr/local/apache-maven
+                export M2=$M2_HOME/bin
+                export PATH=$M2:$PATH
                 mvn clean install
                 '''
             }
@@ -15,9 +18,6 @@ pipeline{
         stage('scanning with sonarqube') {
             steps {
                 sh '''
-                export M2_HOME=/usr/local/apache-maven
-                export M2=$M2_HOME/bin
-                export PATH=$M2:$PATH
                 mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Akhil007-01_bookstore
                 '''
             }
